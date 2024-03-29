@@ -111,6 +111,7 @@ export default function App() {
     <>
       <Navbar />
       <main className="font-cabinG">
+        {/* hero section */}
         <section className="mx-auto flex flex-col items-center space-y-5 mt-20 mb-32">
           <h2 className="text-display text-h2 max-w-[20ch] text-center text-accent">
             Curated Opportunities
@@ -122,6 +123,7 @@ export default function App() {
           </p>
         </section>
 
+        {/* Custom button Navigation  */}
         <section>
           <div className="fixed bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden z-50 ">
             <button className="py-4 px-4 flex gap-x-1 font-bold border bg-dark-charcoal border-dim-gray rounded-md hover:border-text transition-all text-sm items-center w-full justify-between  text-accent">
@@ -136,37 +138,55 @@ export default function App() {
             <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15">
               <Custombutton
                 text="Open Source Programs"
-                count={4}
+                count={
+                  cardData.filter(
+                    (card) => card.program === "Open Source Programs"
+                  ).length
+                }
                 isSelected={selectedButton === "Open Source Programs"}
                 onClick={() => handleButtonClick("Open Source Programs")}
               />
               <Custombutton
                 text="Hackathons"
-                count={8}
+                count={
+                  cardData.filter((card) => card.program === "Hackathons")
+                    .length
+                }
                 isSelected={selectedButton === "Hackathons"}
                 onClick={() => handleButtonClick("Hackathons")}
               />
               <Custombutton
                 text="Student Programs"
-                count={12}
+                count={
+                  cardData.filter((card) => card.program === "Student Programs")
+                    .length
+                }
                 isSelected={selectedButton === "Student Programs"}
                 onClick={() => handleButtonClick("Student Programs")}
               />
               <Custombutton
                 text="Fellowship"
-                count={2}
+                count={
+                  cardData.filter((card) => card.program === "Fellowship")
+                    .length
+                }
                 isSelected={selectedButton === "Fellowship"}
                 onClick={() => handleButtonClick("Fellowship")}
               />
               <Custombutton
                 text="Women"
-                count={3}
+                count={
+                  cardData.filter((card) => card.program === "Women").length
+                }
                 isSelected={selectedButton === "Women"}
                 onClick={() => handleButtonClick("Women")}
               />
               <Custombutton
                 text="Mentorships"
-                count={4}
+                count={
+                  cardData.filter((card) => card.program === "Mentorships")
+                    .length
+                }
                 isSelected={selectedButton === "Mentorships"}
                 onClick={() => handleButtonClick("Mentorships")}
               />
