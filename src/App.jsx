@@ -48,7 +48,7 @@ export default function App() {
     },
 
     {
-      month: "Varies",
+      month: "January",
       title: "Outreachy",
       program: "Open Source Programs",
       picUrl: "./assets/outreachy.png",
@@ -66,7 +66,7 @@ export default function App() {
       picUrl: "./assets/omp.png",
     },
     {
-      month: "Two months",
+      month: "September",
       title: "FOSSASIA Codeheat",
       program: "Open Source Programs",
       picUrl: "./assets/fossasia.png",
@@ -107,6 +107,24 @@ export default function App() {
     }
   };
 
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const currentMonth = monthNames[new Date().getMonth()];
+
+  const [selectedMonths, setSelectedMonths] = useState(currentMonth);
+
   return (
     <>
       <Navbar />
@@ -136,6 +154,12 @@ export default function App() {
 
           <div className="mb-8  z-50 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex">
             <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15">
+              <Custombutton
+                text="All"
+                isSelected={selectedButton === "All"}
+                onClick={() => setSelectedButton("All")}
+              />
+
               <Custombutton
                 text="Open Source Programs"
                 count={
@@ -196,13 +220,19 @@ export default function App() {
 
         <div className="grid grid-cols-3 gap-2">
           <div>
-            <Sidenavigationbar />
+            <Sidenavigationbar
+              selectedMonths={selectedMonths}
+              setSelectedMonths={setSelectedMonths}
+            />
           </div>
           <div className="col-span-2 grid grid-cols-2 gap-6  gap-y-6  pr-14 ml-[-80px]">
             {cardData
               .filter(
                 (card) =>
-                  selectedButton === "All" || card.program === selectedButton
+                  (selectedButton === "All" ||
+                    card.program === selectedButton) &&
+                  (selectedMonths.length === 0 ||
+                    selectedMonths.includes(card.month))
               )
               .map((card, index) => (
                 <div key={index}>
