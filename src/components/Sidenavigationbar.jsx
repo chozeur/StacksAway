@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-const Sidenavigationbar = () => {
-  const [selectedMonths, setSelectedMonths] = useState([]);
-
+const Sidenavigationbar = ({ selectedMonths, setSelectedMonths }) => {
   const handleMonthClick = (month) => {
-    setSelectedMonths([month]);
+    if (selectedMonths.includes(month)) {
+      setSelectedMonths(selectedMonths.filter((m) => m !== month));
+    } else {
+      setSelectedMonths([...selectedMonths, month]);
+    }
   };
 
   const months = [
@@ -32,7 +34,7 @@ const Sidenavigationbar = () => {
               type="checkbox"
               checked={selectedMonths.includes(month)}
               onChange={() => handleMonthClick(month)}
-              className="transition duration-200 ease-in-out"
+              className="transition duration-200 ease-in-out hover:opacity-50"
             />
             <span className="pl-2">{month}</span>
           </label>
