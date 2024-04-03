@@ -8,7 +8,7 @@ const Badge = ({ text }) => (
 
 const Card = ({ month, program, title, picUrl }) => {
   return (
-    <div className="bg-dark-charcoal border-4 h-80 border-outline rounded-xl border-opacity-15  overflow-hidden w-full hover:border-opacity-50 transition-colors duration-150 ease-in group @container ">
+    <div className="bg-dark-charcoal border-2 h-80 border-outline rounded-xl border-opacity-15  overflow-hidden w-full hover:border-opacity-50 transition-colors duration-150 ease-in group @container ">
       <div className=" bg-dark-charcoal p-6 flex flex-col @[30rem]:flex-row @[30rem]:items-center justify-between items-start gap-y-4">
         <div>
           <div className="bg-super-dark-gray flex items-center justify-center p-4 rounded-b-3xl">

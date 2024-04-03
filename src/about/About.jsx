@@ -11,6 +11,8 @@ const FooterMemo = React.memo(Footer);
 function About() {
   const [copied, setCopied] = useState(false);
 
+  /* Noted in Notion */
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText("souvikrajsingh@gmail.com");
     setCopied(true);

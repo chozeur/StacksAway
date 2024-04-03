@@ -10,7 +10,7 @@ function Custombutton({ text, count, isSelected, onClick }) {
     >
       <span
         className={`text-sm xl:text-h6 relative mix-blend-exclusion z-10 ${
-          isSelected ? "text-white" : "text-light-gray"
+          isSelected ? "text-white" : "text-accent "
         }`}
       >
         {text}

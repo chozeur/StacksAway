@@ -29,7 +29,7 @@ function Navbar() {
               </span>
             </Link>
           </span>
-          <Button target="_blank" href="https://forms.gle/PftXkai3sNZquWu68">
+          <Button target="_blank" href="#">
             Add a Resource
           </Button>
         </div>
