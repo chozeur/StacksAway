@@ -1,14 +1,29 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Custombutton from "./components/Custombutton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import Sidenavigationbar from "./components/Sidenavigationbar";
 import Card from "./components/Card/Card";
+import Skeleton from "./components/Card/Skeleton.jsx";
 import PlusIcon from "./components/Plusicon";
-import cardData from "./components/cardData.js";
+// import cardData from "./components/cardData.js";
+import getContent from "./utils/getContent.jsx";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [content, setContent] = useState([]);
+  const { getOpporunities } = getContent();
+
+  useEffect(() => {
+    setIsLoading(true);
+    getOpporunities().then((response) => {
+      setContent(response);
+      setIsLoading(false);
+    });
+  }, []);
+
   const [selectedButton, setSelectedButton] = useState("All");
   const handleButtonClick = (text) => {
     if (selectedButton === text) {
@@ -62,69 +77,30 @@ export default function App() {
               </span>
             </button>
           </div>
-
           <div className="mb-8  z-50 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex">
             <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15">
               <Custombutton
                 text="All"
+                count={content.length}
                 isSelected={selectedButton === "All"}
-                onClick={() => setSelectedButton("All")}
+                onClick={() => handleButtonClick("All")}
               />
 
-              <Custombutton
-                text="Open Source Programs"
-                count={
-                  cardData.filter(
-                    (card) => card.program === "Open Source Programs"
-                  ).length
-                }
-                isSelected={selectedButton === "Open Source Programs"}
-                onClick={() => handleButtonClick("Open Source Programs")}
-              />
-              <Custombutton
-                text="Hackathons"
-                count={
-                  cardData.filter((card) => card.program === "Hackathons")
-                    .length
-                }
-                isSelected={selectedButton === "Hackathons"}
-                onClick={() => handleButtonClick("Hackathons")}
-              />
-              <Custombutton
-                text="Student Programs"
-                count={
-                  cardData.filter((card) => card.program === "Student Programs")
-                    .length
-                }
-                isSelected={selectedButton === "Student Programs"}
-                onClick={() => handleButtonClick("Student Programs")}
-              />
-              <Custombutton
-                text="Fellowship"
-                count={
-                  cardData.filter((card) => card.program === "Fellowship")
-                    .length
-                }
-                isSelected={selectedButton === "Fellowship"}
-                onClick={() => handleButtonClick("Fellowship")}
-              />
-              <Custombutton
-                text="Women"
-                count={
-                  cardData.filter((card) => card.program === "Women").length
-                }
-                isSelected={selectedButton === "Women"}
-                onClick={() => handleButtonClick("Women")}
-              />
-              <Custombutton
-                text="Mentorships"
-                count={
-                  cardData.filter((card) => card.program === "Mentorships")
-                    .length
-                }
-                isSelected={selectedButton === "Mentorships"}
-                onClick={() => handleButtonClick("Mentorships")}
-              />
+              {[...new Set(content.map((item) => item.program))].map(
+                (program) => (
+                  <React.Fragment key={program}>
+                    <Custombutton
+                      text={program}
+                      count={
+                        content.filter((item) => item.program === program)
+                          .length
+                      }
+                      isSelected={selectedButton === program}
+                      onClick={() => handleButtonClick(program)}
+                    />
+                  </React.Fragment>
+                )
+              )}
             </div>
           </div>
         </section>
@@ -137,24 +113,28 @@ export default function App() {
             />
           </div>
           <div className="col-span-2 grid grid-cols-2 gap-6  gap-y-6  pr-14 ml-[-80px]">
-            {cardData
-              .filter(
-                (card) =>
-                  (selectedButton === "All" ||
-                    card.program === selectedButton) &&
-                  (selectedMonths.length === 0 ||
-                    selectedMonths.includes(card.month))
-              )
-              .map((card, index) => (
-                <div key={index}>
-                  <Card
-                    month={card.month}
-                    title={card.title}
-                    program={card.program}
-                    picUrl={card.picUrl}
-                  />
-                </div>
-              ))}
+            {isLoading ? (
+              <Skeleton />
+            ) : (
+              content
+                .filter(
+                  (card) =>
+                    (selectedButton === "All" ||
+                      card.program === selectedButton) &&
+                    (selectedMonths.length === 0 ||
+                      selectedMonths.includes(card.month))
+                )
+                .map((card, index) => (
+                  <div key={index}>
+                    <Card
+                      month={card.month}
+                      title={card.title}
+                      program={card.program}
+                      picUrl={card.image ? `https:${card.image}` : ""}
+                    />
+                  </div>
+                ))
+            )}
           </div>
         </div>
       </main>
