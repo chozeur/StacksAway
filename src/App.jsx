@@ -86,21 +86,34 @@ export default function App() {
                 onClick={() => handleButtonClick("All")}
               />
 
-              {[...new Set(content.map((item) => item.program))].map(
-                (program) => (
-                  <React.Fragment key={program}>
-                    <Custombutton
-                      text={program}
-                      count={
-                        content.filter((item) => item.program === program)
-                          .length
-                      }
-                      isSelected={selectedButton === program}
-                      onClick={() => handleButtonClick(program)}
-                    />
-                  </React.Fragment>
+              {
+                /*Create a new array from 'content' with only the 'program' properties
+                Use the Set object to remove duplicates from the array 
+                Map over the array of unique 'program' values*/
+
+                [...new Set(content.map((item) => item.program))].map(
+                  (program) => (
+                    /* For each unique 'program', create a new Custombutton component
+                     Use a React.Fragment to avoid adding extra nodes to the DOM*/
+
+                    <React.Fragment key={program}>
+                      <Custombutton
+                        // The button text is the 'program' value
+                        text={program}
+                        // The count is the number of items in 'content' with this 'program' value
+                        count={
+                          content.filter((item) => item.program === program)
+                            .length
+                        }
+                        // The button is selected if 'selectedButton' matches this 'program' value
+                        isSelected={selectedButton === program}
+                        // When the button is clicked, call 'handleButtonClick' with this 'program' value
+                        onClick={() => handleButtonClick(program)}
+                      />
+                    </React.Fragment>
+                  )
                 )
-              )}
+              }
             </div>
           </div>
         </section>
