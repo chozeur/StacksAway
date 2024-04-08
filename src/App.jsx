@@ -7,12 +7,14 @@ import Sidenavigationbar from "./components/Sidenavigationbar";
 import Card from "./components/Card/Card";
 import Skeleton from "./components/Card/Skeleton.jsx";
 import PlusIcon from "./components/Plusicon";
-// import cardData from "./components/cardData.js";
 import getContent from "./utils/getContent.jsx";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import CardDetail from "./components/Card/CardDetail.jsx";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
+  // for contentful-cms
   const [content, setContent] = useState([]);
   const { getOpporunities } = getContent();
 
@@ -139,12 +141,19 @@ export default function App() {
                 )
                 .map((card, index) => (
                   <div key={index}>
-                    <Card
-                      month={card.month}
-                      title={card.title}
-                      program={card.program}
-                      picUrl={card.image ? `https:${card.image}` : ""}
-                    />
+                    <Link
+                      to={{
+                        pathname: `programs/${card.slug}`,
+                        state: { month: card.month, title: card.title },
+                      }}
+                    >
+                      <Card
+                        month={card.month}
+                        title={card.title}
+                        program={card.program}
+                        picUrl={card.image ? `https:${card.image}` : ""}
+                      />
+                    </Link>
                   </div>
                 ))
             )}
