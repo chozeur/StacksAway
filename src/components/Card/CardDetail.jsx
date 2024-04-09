@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import getContent from "../../utils/getContent";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { FaDiscord, FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
@@ -21,20 +21,21 @@ function CardDetail() {
       const matchedCard = response.find((card) => card.slug === cardSlug);
       setCard(matchedCard);
     });
+    window.scrollTo(0, 0);
   }, [cardSlug]);
 
   if (!card) {
     return <Skeleton />;
   }
 
-  const Badge = ({ text }) => (
+  const Badge = memo(({ text }) => (
     <div className="flex items-center justify-center px-3 py-2 bg-primary rounded-full text-super-dark-gray font-bold text-xs xl:text-sm 2xl:text-base">
       <span className="flex ">
         {text}
         <GoArrowUpRight />
       </span>
     </div>
-  );
+  ));
 
   return (
     <>
