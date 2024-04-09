@@ -32,6 +32,8 @@ const Sidenavigationbar = ({ selectedMonths, setSelectedMonths }) => {
           <label key={month} className="p-2 flex items-center">
             <input
               type="checkbox"
+              id={month}
+              name={month}
               checked={selectedMonths.includes(month)}
               onChange={() => handleMonthClick(month)}
               className="transition duration-200 ease-in-out hover:opacity-50"
