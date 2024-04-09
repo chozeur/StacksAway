@@ -28,8 +28,22 @@ const getContent = () => {
         const month = items.fields.month;
         const image = items.fields.image.fields.file.url;
         const slug = items.fields.slug;
-
-        return { title, description, program, month, image, slug };
+        const blog = items.fields.blog;
+        const discord = items.fields.discord;
+        const youtube = items.fields.youtube;
+        const apply = items.fields.apply;
+        return {
+          title,
+          description,
+          program,
+          month,
+          image,
+          slug,
+          blog,
+          discord,
+          youtube,
+          apply,
+        };
       });
 
       return sanitizedEntries;
