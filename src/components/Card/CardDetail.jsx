@@ -4,9 +4,17 @@ import { useState, useEffect, memo } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { FaDiscord, FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
-import Skeleton from "./Skeleton";
 import Button from "../Buttons";
 import Footer from "../Footer";
+
+const Badge = memo(({ text }) => (
+  <div className="flex items-center justify-center px-3 py-2 bg-primary rounded-full text-super-dark-gray font-bold text-xs xl:text-sm 2xl:text-base">
+    <span className="flex ">
+      {text}
+      <GoArrowUpRight />
+    </span>
+  </div>
+));
 
 function CardDetail() {
   const { cardSlug } = useParams();
@@ -25,17 +33,8 @@ function CardDetail() {
   }, [cardSlug]);
 
   if (!card) {
-    return <Skeleton />;
+    return null;
   }
-
-  const Badge = memo(({ text }) => (
-    <div className="flex items-center justify-center px-3 py-2 bg-primary rounded-full text-super-dark-gray font-bold text-xs xl:text-sm 2xl:text-base">
-      <span className="flex ">
-        {text}
-        <GoArrowUpRight />
-      </span>
-    </div>
-  ));
 
   return (
     <>

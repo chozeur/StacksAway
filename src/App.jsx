@@ -53,6 +53,15 @@ export default function App() {
 
   const [selectedMonths, setSelectedMonths] = useState(currentMonth);
 
+  const programs = [
+    "All",
+    "Women",
+    "Open Source Programs",
+    "Student Programs",
+    "Hackathons",
+    "Mentorships",
+  ];
+
   return (
     <>
       <Navbar />
@@ -71,7 +80,7 @@ export default function App() {
 
         {/* Custom button Navigation  */}
         <section>
-          <div className="fixed bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden z-50 ">
+          <div className=" sticky top-6 z-50 bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden ">
             <button className="py-4 px-4 flex gap-x-1 font-bold border bg-dark-charcoal border-dim-gray rounded-md hover:border-text transition-all text-sm items-center w-full justify-between  text-accent">
               All
               <span>
@@ -79,43 +88,22 @@ export default function App() {
               </span>
             </button>
           </div>
-          <div className="mb-8  z-50 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex">
-            <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15">
-              <Custombutton
-                text="All"
-                count={content.length}
-                isSelected={selectedButton === "All"}
-                onClick={() => handleButtonClick("All")}
-              />
-
-              {
-                /*Create a new array from 'content' with only the 'program' properties
-                Use the Set object to remove duplicates from the array 
-                Map over the array of unique 'program' values*/
-
-                [...new Set(content.map((item) => item.program))].map(
-                  (program) => (
-                    /* For each unique 'program', create a new Custombutton component
-                     Use a React.Fragment to avoid adding extra nodes to the DOM*/
-
-                    <React.Fragment key={program}>
-                      <Custombutton
-                        // The button text is the 'program' value
-                        text={program}
-                        // The count is the number of items in 'content' with this 'program' value
-                        count={
-                          content.filter((item) => item.program === program)
-                            .length
-                        }
-                        // The button is selected if 'selectedButton' matches this 'program' value
-                        isSelected={selectedButton === program}
-                        // When the button is clicked, call 'handleButtonClick' with this 'program' value
-                        onClick={() => handleButtonClick(program)}
-                      />
-                    </React.Fragment>
-                  )
-                )
-              }
+          <div className=" sticky z-50  mb-8 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex ">
+            <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15 ">
+              {programs.map((program) => (
+                <Custombutton
+                  key={program}
+                  text={program}
+                  count={
+                    program === "All"
+                      ? content.length
+                      : content.filter((item) => item.program === program)
+                          .length
+                  }
+                  isSelected={selectedButton === program}
+                  onClick={() => handleButtonClick(program)}
+                />
+              ))}
             </div>
           </div>
         </section>
