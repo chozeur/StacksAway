@@ -11,7 +11,7 @@ function Navbar() {
           <Logosimplewhite />
           <Link to="/">
             <h1
-              className="font-bold text-h2 font-cabinG"
+              className="hidden sm:block font-bold text-h2 font-cabinG"
               style={{ color: "#D0C7B3" }}
             >
               STACKSAWAY

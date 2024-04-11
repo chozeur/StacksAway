@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { GoArrowUpRight } from "react-icons/go";
 import { GoCheckCircle } from "react-icons/go";
 import { useState, useEffect } from "react";
 
@@ -29,18 +28,22 @@ function About() {
   }, [copied]);
   return (
     <>
+      {/*  flex text-display text-h5 md:text-h2 max-w-[20ch] text-center text-accent mb-4 md:mb-0*/}
+
+      {/* text-h6 md:text-h5 space-y-2 md:space-y-7 */}
+
       <NavbarMemo />
       <section className="grid grid-cols-1 md:grid-cols-2 font-cabinG text-light-gray p-4 md:p-12">
-        <header className="flex text-display text-h5 md:text-h2 max-w-[20ch] text-center text-accent mb-4 md:mb-0">
+        <header className="font-extrabold p-4 text-5xl text-accent space-y-2 lg:flex md:space-y-0 lg:space-x-4 2xl:pl-16">
           <h1>About</h1>
-          <h2 className="pl-2 text-light-gray">StacksAway</h2>
+          <h2 className=" text-light-gray">StacksAway</h2>
         </header>
-        <article className="text-h6 md:text-h5 space-y-2 md:space-y-7">
+        <article className="text-h6 2xl:text-2xl p-4 2xl:pr-32 space-y-5">
           <p>
             I created <strong>StacksAway</strong> to bridge the gap students
             face in finding tech opportunity in college. Starting from Student
             Programs, Mentorship Programs, Open Source Programs, or Fellowship
-            Programs
+            Programs.
           </p>
           <p>
             I saw this video of a very talented YouTuber <strong>huyNG</strong>{" "}
@@ -50,7 +53,7 @@ function About() {
             made some changes to it to make it more unique.
           </p>
 
-          <div className="flex items-center gap-x-3">
+          <div className="flex items-center gap-x-3 py-8">
             <div className="w-20 h-20 rounded-full overflow-hidden">
               <img
                 src="./assets/profile.jpg"
@@ -64,7 +67,7 @@ function About() {
                 className="leading-tight text-light-gray font-cabinG  cursor-pointer hover:underline relative"
                 onClick={copyToClipboard}
               >
-                souvikrajsingh@gmail.com
+                souvikrajsingh02@gmail.com
                 {copied && (
                   <span className="animate-pulse text-light-gray absolute right-[-15] mt-[-50px] text-xs ">
                     Copied to clipboard!{" "}

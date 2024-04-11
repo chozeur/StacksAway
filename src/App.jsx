@@ -35,6 +35,8 @@ export default function App() {
     }
   };
 
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+
   const monthNames = [
     "January",
     "February",
@@ -67,28 +69,45 @@ export default function App() {
       <Navbar />
       <main className="font-cabinG">
         {/* hero section */}
-        <section className="mx-auto flex flex-col items-center space-y-5 mt-20 mb-32">
-          <h2 className="text-display text-h2 max-w-[20ch] text-center text-accent">
+        <section className="mx-auto flex flex-col items-center space-y-5 mt-20 mb-16">
+          <h2 className="text-center text-accent mx-auto font-bold text-2xl sm:text-3xl  lg:text-4xl xl:text-5xl ">
             Curated Opportunities
-            <span className="text-light-gray pl-2">for students :| </span>
+            <span className="text-light-gray pl-2">for Students </span>
           </h2>
-          <p className="text-text mx-auto text-base text-center xl:text-h6 2xl:text-h5 pt-5 max-w-[50ch]">
-            Explore curated and handpicked opportunities that enhance your
-            experience in tech.
+          <p className="text-text mx-auto text-lg text-center xl:text-h6 2xl:text-h5 max-w-[50ch]">
+            Explore handpicked opportunities tailored to enhance your tech
+            experience.
           </p>
         </section>
 
         {/* Custom button Navigation  */}
         <section>
-          <div className=" sticky top-6 z-50 bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden ">
-            <button className="py-4 px-4 flex gap-x-1 font-bold border bg-dark-charcoal border-dim-gray rounded-md hover:border-text transition-all text-sm items-center w-full justify-between  text-accent">
+          <div className="sticky top-6 z-50 bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden">
+            <button
+              className="py-4 px-4 flex gap-x-1 font-bold border bg-dark-charcoal border-dim-gray rounded-md hover:border-text transition-all text-sm items-center w-full justify-between text-accent"
+              onClick={() => setIsButtonClicked(!isButtonClicked)}
+            >
               All
               <span>
                 <PlusIcon />
               </span>
             </button>
+            {isButtonClicked &&
+              programs.map((program) => (
+                <Custombutton
+                  text={program}
+                  count={
+                    program === "All"
+                      ? content.length
+                      : content.filter((item) => item.program === program)
+                          .length
+                  }
+                  isSelected={selectedButton === program}
+                  onClick={() => handleButtonClick(program)}
+                />
+              ))}
           </div>
-          <div className=" sticky z-50  mb-8 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex ">
+          <div className=" sticky top-0 z-50  mb-8 justify-center gap-x-2 flex-wrap gap-y-2 hidden sm:flex ">
             <div className="flex gap-x-0 bg-dark-charcoal rounded-xl border border-outline border-opacity-15 ">
               {programs.map((program) => (
                 <Custombutton
@@ -108,14 +127,14 @@ export default function App() {
           </div>
         </section>
 
-        <div className="grid grid-cols-3 gap-2">
-          <div>
+        <div className="flex flex-col 2xl:mr-12 md:grid md:grid-cols-3 gap-2 ">
+          <div className="order-1 md:order-2">
             <Sidenavigationbar
               selectedMonths={selectedMonths}
               setSelectedMonths={setSelectedMonths}
             />
           </div>
-          <div className="col-span-2 grid grid-cols-2 gap-6  gap-y-6  pr-14 ml-[-80px]">
+          <div className="order-1 md:order-2 col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-6 px-14 md:pl-0 md:pr-14 md:ml-[-80px]">
             {isLoading ? (
               <Skeleton />
             ) : (
