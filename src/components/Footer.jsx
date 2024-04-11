@@ -31,49 +31,41 @@ const Footer = () => {
       <div className="mt-4 mb-10">
         <FooterLarge className="w-1/5" />
       </div>
-      <div className="gap-1 sm:flex flex-row sm:gap-8">
-        <div className="flex justify-between items-center gap-4 my-5 font-cabinG text-base">
-          <div className="flex flex-col">
-            <Link to="/about">About</Link>
-            <Link href="https://forms.gle/qDE1JXUK2w9Nhh7v6">
-              Add a Resource
-            </Link>
+      <div className="mb-8 md:space-y-4 flex flex-col lg:flex-row justify-between items-start lg:items-center ">
+        <div className="text-left space-y-2  font-cabinG text-sm md:text-xl">
+          <p>
+            Made and Curated by <strong>SRS</strong>
+          </p>
+          <p className="text-sm md:text-base">
+            © {new Date().getFullYear()} StacksAway All rights reserved.
+          </p>
+        </div>
+        <div className="flex flex-col  space-y-0 sm:flex-row gap-1 sm:gap-6">
+          <div className="flex justify-between items-center gap-4 mt-5 md:mt-2 font-cabinG text-base md:text-base">
+            <div className="flex flex-col">
+              <Link to="/about">About</Link>
+              <Link href="https://forms.gle/qDE1JXUK2w9Nhh7v6">
+                Add a Resource
+              </Link>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center gap-4 font-cabinG text-base md:text-base">
+            <div className="flex flex-col">
+              <Link href="#form-link">Drop a Feedback</Link>
+              <Link href="https://github.com/souvikrajsingh/Stacksaway">
+                Contribute on Github
+              </Link>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center gap-4 font-cabinG text-base md:text-base">
+            <div className="flex flex-col">
+              <Link href="mailto:souvikrajsingh02@gmail.com">Email me</Link>
+              <Link href="https://twitter.com/souviktwts">Twitter</Link>
+            </div>
           </div>
         </div>
-
-        <div className="flex justify-between items-center gap-4 my-5 font-cabinG text-base">
-          <div className="flex flex-col">
-            <Link href="#form-link">Drop a Feedback</Link>
-            <Link href="https://github.com/souvikrajsingh/Stacksaway">
-              Contribute on Github
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center gap-4 my-5 font-cabinG text-base">
-          <div className="flex flex-col">
-            <Link href="mailto:souvikrajsingh02@gmail.com">Email me</Link>
-            <Link href="https://twitter.com/souviktwts">Twitter</Link>
-          </div>
-        </div>
-
-        {/* <div className="text-xs text-gray-500">
-          <div>
-            <span className="w-fit flex-nowrap whitespace-nowrap">
-              Made &amp; Curated by &nbsp;
-            </span>
-            <a
-              className="font-bold  group  "
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://twitter.com/souviktwts"
-            >
-              <span>srs;|</span>
-            </a>
-          </div>
-          © 2024 <span className="font-bold ">STACKSAWAY</span> All Rights
-          Reserved
-        </div> */}
       </div>
     </footer>
   );

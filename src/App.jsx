@@ -70,11 +70,11 @@ export default function App() {
       <main className="font-cabinG">
         {/* hero section */}
         <section className="mx-auto flex flex-col items-center space-y-5 mt-20 mb-16">
-          <h2 className="text-center text-accent mx-auto font-bold text-2xl sm:text-3xl  lg:text-4xl xl:text-5xl ">
+          <h2 className="text-center text-accent mx-auto font-bold text-4xl max-w-[15ch] lg:max-w-[30ch] m-2   lg:text-4xl xl:text-5xl ">
             Curated Opportunities
             <span className="text-light-gray pl-2">for Students </span>
           </h2>
-          <p className="text-text mx-auto text-lg text-center xl:text-h6 2xl:text-h5 max-w-[50ch]">
+          <p className=" mx-auto text-lg text-center xl:text-h6 2xl:text-h5 max-w-[30ch] lg:max-w-[60ch]">
             Explore handpicked opportunities tailored to enhance your tech
             experience.
           </p>
@@ -82,7 +82,7 @@ export default function App() {
 
         {/* Custom button Navigation  */}
         <section>
-          <div className="sticky top-6 z-50 bottom-0 left-0 right-0 bg-bg p-4 flex justify-center gap-x-2 gap-y-2 sm:hidden">
+          <div className="sticky top-6 z-50 bottom-0 left-0 right-0 bg-bg p-4 flex flex-col sm:flex-row justify-center gap-x-2 gap-y-2 sm:hidden">
             <button
               className="py-4 px-4 flex gap-x-1 font-bold border bg-dark-charcoal border-dim-gray rounded-md hover:border-text transition-all text-sm items-center w-full justify-between text-accent"
               onClick={() => setIsButtonClicked(!isButtonClicked)}
@@ -95,6 +95,7 @@ export default function App() {
             {isButtonClicked &&
               programs.map((program) => (
                 <Custombutton
+                  key={program}
                   text={program}
                   count={
                     program === "All"
@@ -126,7 +127,6 @@ export default function App() {
             </div>
           </div>
         </section>
-
         <div className="flex flex-col 2xl:mr-12 md:grid md:grid-cols-3 gap-2 ">
           <div className="order-1 md:order-2">
             <Sidenavigationbar
@@ -134,7 +134,7 @@ export default function App() {
               setSelectedMonths={setSelectedMonths}
             />
           </div>
-          <div className="order-1 md:order-2 col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-6 px-14 md:pl-0 md:pr-14 md:ml-[-80px]">
+          <div className="order-1 md:order-2 col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-6 px-14 md:pl-0 md:pr-14 md:ml-[-80px] 2xl:ml-[-120px]">
             {isLoading ? (
               <Skeleton />
             ) : (
