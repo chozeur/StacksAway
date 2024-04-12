@@ -49,7 +49,7 @@ function CardDetail() {
       <div className="grid grid-cols-1 font-cabinG px-6 md:grid-cols-2 gap-4 justify-items-center items-center ">
         <Link
           to="/"
-          className="font-semibold text-sm sm:text-base absolute flex top-0 left-0 text-gradient2 m-2 pt-20 sm:m-4 sm:pl-16 md:pt-24 xl:pt-28 xl:pl-20 2xl:pt-32 2xl:pl-28 hover:text-outline transition-colors duration-150 ease-in"
+          className="font-semibold text-sm sm:text-base absolute flex top-0 left-0 text-gradient2 m-6 pt-20 sm:m-4 sm:pl-16 md:pt-24 xl:pt-28 xl:pl-20 2xl:pt-32 2xl:pl-28 hover:text-outline transition-colors duration-150 ease-in"
         >
           <IoArrowBack className="size-6 sm:size-7" />
           Back
