@@ -84,7 +84,7 @@ function CardDetail() {
           <p className=" pl-10 text-base sm:text-left sm:pl-4 sm:text-lg lg:p-0 2xl:text-xl 2xl:p-0 ">
             {card.description}
           </p>
-          <Button href={card.link}>Visit Official Website</Button>
+          <Button href={card.apply}>Visit Official Website</Button>
           <div>
             <div className=" gap-x-1 grid grid-cols-12 border-t-2 border-outline border-opacity-20 py-2">
               <h2 className=" font-semibold col-span-4 2xl:text-lg">Program</h2>

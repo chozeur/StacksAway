@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className=" border-b-2 px-8 border-b-dim-gray border-opacity-30 font-cabinG">
+    <div className=" border-b-2 px-8 border-b-dim-gray border-opacity-30 ml-6 mr-6 lg:ml-10 lg:mr-10 font-cabinG">
       <nav className="px-0 sm:px-6 pt-1 pb-2 xl:pb-4 2xl:pb-6  border-gray border-opacity-20 mt-4 xl:mt-8 2xl:mt-10  flex items-center justify-between">
         <div className="flex justify-start gap-4">
           <Logosimplewhite />
@@ -29,7 +29,7 @@ function Navbar() {
               </span>
             </Link>
           </span>
-          <Button target="_blank" href="#">
+          <Button target="_blank" href="https://forms.gle/LF9Q7SnDRSo1Z9758">
             Add a Resource
           </Button>
         </div>

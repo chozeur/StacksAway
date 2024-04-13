@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const NavbarMemo = React.memo(Navbar);
 const FooterMemo = React.memo(Footer);
 
-function About() {
+function Legal() {
   const [copied, setCopied] = useState(false);
 
   /* Noted in Notion */
@@ -44,32 +44,19 @@ function About() {
             <IoArrowBack className="size-" />
             Back
           </Link>
-          <h1>About</h1>
-          <h2 className=" text-light-gray">StacksAway</h2>
+          <h1>Legal</h1>
+          <h2 className=" text-light-gray">Info</h2>
         </header>
         <article className="text-h6 2xl:text-2xl p-4 2xl:pr-32 space-y-5">
           <p>
-            Being a Student in Tech its extemely important to be part of global
-            communities and get involved in various opportunities to enhance
-            your skills and experience. But finding these opportunities is a
-            challenge in itself.
+            <strong>StacksAway</strong> uses Google analytics to monitor the
+            traffic on the website data to improve the user experience on the
+            website. No data is collected or shared with any third party.
           </p>
           <p>
-            {" "}
-            I created <strong>StacksAway</strong> with the aim to create a one
-            stop hub where students can find all the opportunities in one place.
-            Starting from Mentorships, Fellowships, Hackathons, and more. I hope
-            this website helps you in your journey in tech. The list of
-            opportunities are updated weekly based on the feedback and
-            suggestions from the community.{" "}
-            <strong>[Check out the Footer for feedback form]</strong>
-          </p>
-          <p>
-            I saw this video of a very talented YouTuber <strong>huyNG</strong>{" "}
-            who created something similar for the frontend community. I was
-            inspired by his work and decided to create something similar for the
-            tech student community. The design is inspired by his work but I
-            made some changes to it to make it more unique.
+            All the links to the blog post and the YouTube videos belong to
+            their respective authors and creators. We <strong>do not</strong>{" "}
+            own any of the content shared on the website.
           </p>
 
           <div className="flex items-center gap-x-3 py-8">
@@ -88,7 +75,7 @@ function About() {
               >
                 souvikrajsingh02@gmail.com
                 {copied && (
-                  <span className="animate-pulse text-light-gray absolute right-[-10px]  mt-[-70px] text-xs ">
+                  <span className="animate-pulse text-light-gray absolute right-[-15] mt-[-50px] text-xs ">
                     Copied to clipboard!{" "}
                     <GoCheckCircle className="fill-green-500 stroke-[0.2] " />
                   </span>
@@ -105,4 +92,4 @@ function About() {
   );
 }
 
-export default About;
+export default Legal;

@@ -71,12 +71,12 @@ export default function App() {
         {/* hero section */}
         <section className="mx-auto flex flex-col items-center space-y-5 mt-20 mb-16">
           <h2 className="text-center text-accent mx-auto font-bold text-4xl max-w-[15ch] lg:max-w-[30ch] m-2   lg:text-4xl xl:text-5xl ">
-            Curated Opportunities
-            <span className="text-light-gray pl-2">for Students </span>
+            Discover the Ultimate
+            <span className="text-light-gray pl-2">Student Program Hub </span>
           </h2>
           <p className=" mx-auto text-lg text-center xl:text-h6 2xl:text-h5 max-w-[30ch] lg:max-w-[60ch]">
-            Explore handpicked opportunities tailored to enhance your tech
-            experience.
+            Find Mentorships, Fellowships, Hackathons, and More in One Place to
+            enhance your experience in tech
           </p>
         </section>
 

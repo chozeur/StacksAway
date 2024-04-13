@@ -6,6 +6,7 @@ const App = lazy(() => import("./App.jsx"));
 const About = lazy(() => import("./about/About.jsx"));
 const CardDetail = lazy(() => import("./components/Card/CardDetail.jsx"));
 const NotFound = lazy(() => import("./components/404/NotFound.jsx"));
+const Legal = lazy(() => import("./legal/Legal.jsx"));
 
 import ReactGA from "react-ga4";
 
@@ -22,6 +23,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/about" element={<About />} />
+          <Route path="/legalinfo" element={<Legal />} />
           <Route path="programs/:cardSlug" element={<CardDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

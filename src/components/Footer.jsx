@@ -4,7 +4,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import { Link as RouterLink } from "react-router-dom";
 
 /*  
-    Define a Link Component that takes href and children as props.
+    Defining a Link Component that takes href and children as props.
     This component is used to create a link with an arrow icon that animates on hover.
   */
 
@@ -26,25 +26,39 @@ const Link = ({ href, to, children }) => (
 
 const Footer = () => {
   return (
-    <footer className="mx-4">
-      <div className="border-b border-b-gray pb-6 mt-8"></div>
-      <div className="mt-4 mb-10">
+    <footer className="">
+      <div className="border-b-2 border-b-dim-gray border-opacity-30 pb-6 ml-6 mr-6 lg:ml-10 lg:mr-10 mt-8 "></div>
+      <div className="mt-4 ml-6 mr-6 mb-10 lg:ml-10 lg:mr-10">
         <FooterLarge className="w-1/5" />
       </div>
-      <div className="mb-8 md:space-y-4 flex flex-col lg:flex-row justify-between items-start lg:items-center ">
-        <div className="text-left space-y-2  font-cabinG text-sm md:text-xl">
-          <p>
-            Made and Curated by <strong>SRS</strong>
-          </p>
-          <p className="text-sm md:text-base">
-            © {new Date().getFullYear()} StacksAway All rights reserved.
-          </p>
+      <div className="mb-8 ml-8 mr-8 lg:ml-16 lg:mr-16 md:space-y-4 flex flex-col lg:flex-row justify-between items-start lg:items-center ">
+        <div className="text-left space-y-2  font-cabinG text-lg lg:text-xl">
+          <div className="flex w-56 gap-x-1 xl:w-96 ">
+            <span className="w-fit flex-nowrap whitespace-nowrap">
+              Made & Curated by{" "}
+            </span>
+            <a
+              className="font-bold relative overflow-y-hidden w-full group h-fit"
+              target="_blank"
+              href="https://github.com/souvikrajsingh"
+            >
+              <span className="flex group-hover:-translate-y-5 group-hover:opacity-0 transition-all ease-in-out-circ duration-500">
+                SRS
+              </span>
+              <span className="absolute inset-0 group-hover:translate-y-0 translate-y-7 lg:translate-y-5 xl:translate-y-8 transition-all ease-in-out-circ duration-500 underline flex-nowrap whitespace-nowrap">
+                Souvik :)
+              </span>
+            </a>
+          </div>
+          <div className="font-bold">
+            <Link to="/legalinfo">Legal</Link>
+          </div>
         </div>
         <div className="flex flex-col  space-y-0 sm:flex-row gap-1 sm:gap-6">
           <div className="flex justify-between items-center gap-4 mt-5 md:mt-2 font-cabinG text-base md:text-base">
             <div className="flex flex-col">
               <Link to="/about">About</Link>
-              <Link href="https://forms.gle/qDE1JXUK2w9Nhh7v6">
+              <Link href="https://forms.gle/LF9Q7SnDRSo1Z9758">
                 Add a Resource
               </Link>
             </div>
@@ -52,7 +66,9 @@ const Footer = () => {
 
           <div className="flex justify-between items-center gap-4 font-cabinG text-base md:text-base">
             <div className="flex flex-col">
-              <Link href="#form-link">Drop a Feedback</Link>
+              <Link href="https://forms.gle/ned3wopHCQwWC8JfA">
+                Drop a Feedback
+              </Link>
               <Link href="https://github.com/souvikrajsingh/Stacksaway">
                 Contribute on Github
               </Link>
