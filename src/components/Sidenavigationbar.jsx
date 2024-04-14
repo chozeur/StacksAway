@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PlusIcon from "./Plusicon";
 
 const Sidenavigationbar = ({ selectedMonths, setSelectedMonths }) => {
@@ -25,6 +25,24 @@ const Sidenavigationbar = ({ selectedMonths, setSelectedMonths }) => {
     "November",
     "December",
   ];
+
+	const [selectAll, setSelectAll] = useState(false);
+	const toggleSelectAll = () => {
+		if (selectAll) {
+			setSelectedMonths([]);
+		} else {
+			setSelectedMonths(months);
+		}
+		setSelectAll(!selectAll);
+	};
+
+	useEffect(() => {
+		if (selectedMonths.length === months.length) {
+			setSelectAll(true);
+		} else {
+			setSelectAll(false);
+		}
+	}, [selectedMonths]);
 
   return (
     <>
@@ -57,6 +75,12 @@ const Sidenavigationbar = ({ selectedMonths, setSelectedMonths }) => {
       <div className="pl-8 md:pl-3 lg:pl-10 2xl:pl-32 font-bold text-lg text-light-gray sticky top-4 hidden md:block ">
         <div className="left-0 w-64 md:w-44 lg:w-64 2xl:w-80  2xl:h-[750px] border-b-2 p-6 border-b-dim-gray bg-dark-charcoal rounded-xl border border-outline border-opacity-15">
           <h2 className="text-center text-xl lg:text-2xl font-bold ">Months</h2>
+					<button
+            onClick={toggleSelectAll}
+            className="w-full py-2 px-4 mt-4 mb-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            {selectAll ? "Unselect All" : "Select All"}
+          </button>
           {months.map((month) => (
             <label key={month} className="p-2 2xl:p-3 flex ">
               <input
